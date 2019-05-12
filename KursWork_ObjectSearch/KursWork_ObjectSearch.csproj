@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="alglibnet2">
+      <HintPath>Lib\alglibnet2.dll</HintPath>
+    </Reference>
     <Reference Include="Emgu.CV.UI, Version=4.0.1.3373, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <HintPath>..\packages\EMGU.CV.4.0.1.3373\lib\net35\Emgu.CV.UI.dll</HintPath>
     </Reference>
@@ -58,13 +61,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmguCV\DrawMatches.cs" />
-    <Compile Include="Helper\IOHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MikhailCV\Converter\ColorConverter.cs" />
+    <Compile Include="MikhailCV\enums\BorderWrapType.cs" />
+    <Compile Include="MikhailCV\Helper\DrawHelper.cs" />
+    <Compile Include="MikhailCV\Helper\IOHelper.cs" />
+    <Compile Include="MikhailCV\Helper\MatHelper.cs" />
+    <Compile Include="MikhailCV\Helper\NormalizationHelper.cs" />
+    <Compile Include="MikhailCV\Logic\Blobs\BlobDetector.cs" />
+    <Compile Include="MikhailCV\Logic\Convolution\ConvolutionHelper.cs" />
+    <Compile Include="MikhailCV\Logic\Convolution\Gauss.cs" />
+    <Compile Include="MikhailCV\Logic\Convolution\Kernel.cs" />
+    <Compile Include="MikhailCV\Logic\Convolution\SobelHelper.cs" />
+    <Compile Include="MikhailCV\Logic\Descriptors\Descriptor.cs" />
+    <Compile Include="MikhailCV\Logic\Descriptors\DescriptorMatcher.cs" />
+    <Compile Include="MikhailCV\Logic\Descriptors\FindDescriptor.cs" />
+    <Compile Include="MikhailCV\Logic\Descriptors\RotationInvariant.cs" />
+    <Compile Include="MikhailCV\Logic\Descriptors\Vector.cs" />
+    <Compile Include="MikhailCV\Logic\Image\Mat.cs" />
+    <Compile Include="MikhailCV\Logic\Points\CornerDetectionHelper.cs" />
+    <Compile Include="MikhailCV\Logic\Points\Harris.cs" />
+    <Compile Include="MikhailCV\Logic\Points\InterestingPoint.cs" />
+    <Compile Include="MikhailCV\Logic\Points\NonMaximumSuppression.cs" />
+    <Compile Include="MikhailCV\Logic\Scale\Pyramid.cs" />
+    <Compile Include="MikhailCV\Logic\Scale\PyramidMat.cs" />
+    <Compile Include="MikhailCV\Logic\Transformation\Hough.cs" />
+    <Compile Include="MikhailCV\Logic\Transformation\Ransac.cs" />
+    <Compile Include="MikhailCV\Logic\Transformation\Transformer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -96,9 +124,7 @@
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MikhailCV\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\EMGU.CV.4.0.1.3373\build\EMGU.CV.targets" Condition="Exists('..\packages\EMGU.CV.4.0.1.3373\build\EMGU.CV.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
